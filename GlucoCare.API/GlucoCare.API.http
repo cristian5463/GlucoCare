@@ -1,0 +1,6 @@
+@GlucoCare.API_HostAddress = http://localhost:5090
+
+GET {{GlucoCare.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

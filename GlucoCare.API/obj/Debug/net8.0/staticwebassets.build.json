@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "l3twZrmaIxd55MemyOqDbR+CVuqsL4P/vesm0q3UvmY=",
+  "Source": "GlucoCare.API",
+  "BasePath": "_content/GlucoCare.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,15 @@
+C:\GlucoCare\GlucoCare.Application\bin\Debug\net8.0\GlucoCare.Application.deps.json
+C:\GlucoCare\GlucoCare.Application\bin\Debug\net8.0\GlucoCare.Application.dll
+C:\GlucoCare\GlucoCare.Application\bin\Debug\net8.0\GlucoCare.Application.pdb
+C:\GlucoCare\GlucoCare.Application\bin\Debug\net8.0\GlucoCare.Domain.dll
+C:\GlucoCare\GlucoCare.Application\bin\Debug\net8.0\GlucoCare.Domain.pdb
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCare.Application.csproj.AssemblyReference.cache
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCare.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCare.Application.AssemblyInfoInputs.cache
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCare.Application.AssemblyInfo.cs
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCare.Application.csproj.CoreCompileInputs.cache
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCar.B5D82EA6.Up2Date
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCare.Application.dll
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\refint\GlucoCare.Application.dll
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCare.Application.pdb
+C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\ref\GlucoCare.Application.dll

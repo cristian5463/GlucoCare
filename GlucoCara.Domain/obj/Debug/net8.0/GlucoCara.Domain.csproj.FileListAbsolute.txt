@@ -1,0 +1,11 @@
+C:\GlucoCare\GlucoCara.Domain\bin\Debug\net8.0\GlucoCara.Domain.deps.json
+C:\GlucoCare\GlucoCara.Domain\bin\Debug\net8.0\GlucoCara.Domain.dll
+C:\GlucoCare\GlucoCara.Domain\bin\Debug\net8.0\GlucoCara.Domain.pdb
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCara.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCara.Domain.AssemblyInfoInputs.cache
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCara.Domain.AssemblyInfo.cs
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCara.Domain.csproj.CoreCompileInputs.cache
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCara.Domain.dll
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\refint\GlucoCara.Domain.dll
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCara.Domain.pdb
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\ref\GlucoCara.Domain.dll
