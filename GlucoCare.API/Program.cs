@@ -20,6 +20,12 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 
 var app = builder.Build();
 
+// Configure CORS
+app.UseCors(builder => builder
+    .AllowAnyOrigin() // Permitir qualquer origem
+    .AllowAnyMethod() // Permitir qualquer método (GET, POST, etc.)
+    .AllowAnyHeader()); // Permitir qualquer cabeçalho
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
