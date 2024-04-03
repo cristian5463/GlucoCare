@@ -39,8 +39,14 @@ public class InsulinRepository : IInsulinRepository
 
     public async Task<InsulinEntity> UpdateAsync(InsulinEntity insulin)
     {
-        _insulinContext.Update(insulin);
+        var existingInsulin = await _insulinContext.FindAsync<InsulinEntity>(insulin.Id);
+
+        // Define explicitamente quais propriedades devem ser modificadas
+        _insulinContext.Entry(existingInsulin).CurrentValues.SetValues(insulin);
+        _insulinContext.Entry(existingInsulin).Property(x => x.CreatedAt).IsModified = false;
+
         await _insulinContext.SaveChangesAsync();
-        return insulin;
+
+        return existingInsulin;
     }
 }

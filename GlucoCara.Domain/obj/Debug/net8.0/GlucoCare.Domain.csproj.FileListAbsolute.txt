@@ -9,3 +9,5 @@ C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCare.Domain.dll
 C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\refint\GlucoCare.Domain.dll
 C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCare.Domain.pdb
 C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\ref\GlucoCare.Domain.dll
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCare.Domain.sourcelink.json
+C:\GlucoCare\GlucoCara.Domain\obj\Debug\net8.0\GlucoCare.Domain.csproj.AssemblyReference.cache

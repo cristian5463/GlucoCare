@@ -1,4 +1,5 @@
 ﻿using GlucoCare.Application.Interfaces;
+using GlucoCare.Application.Response;
 using GlucoCare.source.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,7 +7,7 @@ namespace GlucoCare.API.Controllers;
 
 [Route("api/v1/[Controller]")]
 [ApiController]
-public class InsulinController : Controller
+public class InsulinController : ControllerBase
 {
     private readonly IInsulinService _insulinService;
 
@@ -42,6 +43,7 @@ public class InsulinController : Controller
             return BadRequest(ModelState);
         }
 
+        insulinDTO.CreatedAt = DateTime.UtcNow;
         await _insulinService.Add(insulinDTO);
 
         return new CreatedAtRouteResult("GetInsulin",
@@ -58,7 +60,7 @@ public class InsulinController : Controller
 
         await _insulinService.Update(insulinDTO);
 
-        return Ok(insulinDTO);
+        return Ok(new Status200("Insulina Alterada"));
     }
 
     [HttpDelete("{id}")]
@@ -70,6 +72,6 @@ public class InsulinController : Controller
             return NotFound();
         }
         await _insulinService.Remove(id);
-        return Ok(insulinDTO);
+        return Ok(new Status200("Insulina Deletada"));
     }
 }

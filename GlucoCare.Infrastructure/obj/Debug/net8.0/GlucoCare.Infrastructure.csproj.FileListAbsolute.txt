@@ -15,3 +15,4 @@ C:\GlucoCare\GlucoCare.Infrastructure\obj\Debug\net8.0\GlucoCare.Infrastructure.
 C:\GlucoCare\GlucoCare.Infrastructure\obj\Debug\net8.0\ref\GlucoCare.Infrastructure.dll
 C:\GlucoCare\GlucoCare.Infrastructure\bin\Debug\net8.0\GlucoCare.Infrastructure.runtimeconfig.json
 C:\GlucoCare\GlucoCare.Infrastructure\obj\Debug\net8.0\GlucoCare.Infrastructure.genruntimeconfig.cache
+C:\GlucoCare\GlucoCare.Infrastructure\obj\Debug\net8.0\GlucoCare.Infrastructure.sourcelink.json

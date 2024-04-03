@@ -14,5 +14,8 @@ namespace GlucoCare.source.Dtos
         public bool IndividualApplication { get; set; }
         public int[] TypesInsulin { get; set; }
         public int IdUser { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

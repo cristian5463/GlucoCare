@@ -107,5 +107,42 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "GlucoCare.API.Controllers.UserController",
+    "Method": "Post",
+    "RelativePath": "api/v1/User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDTO",
+        "Type": "GlucoCare.Application.DTOs.UserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlucoCare.API.Controllers.UserController",
+    "Method": "Put",
+    "RelativePath": "api/v1/User/{UserId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userDTO",
+        "Type": "GlucoCare.Application.DTOs.UserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

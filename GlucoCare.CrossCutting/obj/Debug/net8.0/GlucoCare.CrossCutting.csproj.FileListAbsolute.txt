@@ -17,3 +17,6 @@ C:\GlucoCare\GlucoCare.CrossCutting\obj\Debug\net8.0\GlucoCare.CrossCutting.dll
 C:\GlucoCare\GlucoCare.CrossCutting\obj\Debug\net8.0\refint\GlucoCare.CrossCutting.dll
 C:\GlucoCare\GlucoCare.CrossCutting\obj\Debug\net8.0\GlucoCare.CrossCutting.pdb
 C:\GlucoCare\GlucoCare.CrossCutting\obj\Debug\net8.0\ref\GlucoCare.CrossCutting.dll
+C:\GlucoCare\GlucoCare.CrossCutting\obj\Debug\net8.0\GlucoCare.CrossCutting.sourcelink.json
+C:\GlucoCare\GlucoCare.CrossCutting\bin\Debug\net8.0\GlucoCare.CrossCutting.runtimeconfig.json
+C:\GlucoCare\GlucoCare.CrossCutting\obj\Debug\net8.0\GlucoCare.CrossCutting.genruntimeconfig.cache

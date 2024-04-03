@@ -1,9 +1,11 @@
 ﻿using GlucoCare.Application.Interfaces;
 using GlucoCare.Application.Mappings;
 using GlucoCare.Application.Services;
+using GlucoCare.Domain.Entities;
 using GlucoCare.Domain.Interfaces;
 using GlucoCare.Infrastructure.Context;
 using GlucoCare.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,11 +23,17 @@ public static class DependencyInjectionAPI
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
+        services.AddDbContext<UserDbContext>
+            (options => options.UseNpgsql(connectionString));
+
         services.AddDbContext<ApplicationDbContext>
             (options => options.UseNpgsql(connectionString));
 
         services.AddScoped<IInsulinRepository, InsulinRepository>();
         services.AddScoped<IInsulinService, InsulinService>();
+
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserService, UserService>();
 
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 

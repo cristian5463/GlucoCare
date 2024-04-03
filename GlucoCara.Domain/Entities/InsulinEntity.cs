@@ -9,13 +9,16 @@ namespace GlucoCare.source.Domain.Entities
         private bool individualApplication;
         private int[] typesInsulin;
         private int idUser;
+        private DateTime createdAt;
+        private DateTime updatedAt;
 
-        public InsulinEntity(string nameInsulin, bool individualApplication, int[] typesInsulin, int idUser)
+        public InsulinEntity(string nameInsulin, bool individualApplication, int[] typesInsulin, int idUser, DateTime createdAt)
         {
             NameInsulin = nameInsulin;
             IndividualApplication = individualApplication;
             TypesInsulin = typesInsulin;
             IdUser = idUser;
+            CreatedAt = createdAt;
         }
 
         public string NameInsulin
@@ -56,6 +59,18 @@ namespace GlucoCare.source.Domain.Entities
         {
             get { return idUser; }
             private set { idUser = value; }
+        }
+
+        public DateTime CreatedAt
+        {
+            get { return createdAt; }
+            private set { createdAt = value; }
+        }
+
+        public DateTime UpdatedAt
+        {
+            get { return updatedAt; }
+            private set { updatedAt = DateTime.UtcNow; }
         }
     }
 }
