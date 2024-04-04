@@ -32,8 +32,25 @@ public class UserController : ControllerBase
     [HttpPut("{UserId}")]
     public async Task<ActionResult> Put(int userID, [FromBody] UserDTO userDTO)
     {
+        if (userID != userDTO.UserId)
+        {
+            return BadRequest();
+        }
+
         await _userService.Update(userDTO);
 
         return Ok(new Status200("Usuário Alterado"));
+    }
+
+    [HttpDelete("{UserId}")]
+    public async Task<ActionResult<UserDTO>> Delete(int userId)
+    {
+        var userDTO = await _userService.GetByUserId(userId);
+        if (userDTO == null)
+        {
+            return Ok(new Status400("Usuário Não Encontrado"));
+        }
+        await _userService.Remove(userId);
+        return Ok(new Status200("Usuário Deletado"));
     }
 }

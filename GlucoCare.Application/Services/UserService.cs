@@ -22,14 +22,21 @@ public class UserService : IUserService
         return _userRepository.CreateAsync(userEntity, userDTO.Password);
     }
 
-    public async Task Remove(int? id)
+    public async Task Remove(int? userId)
     {
-        throw new NotImplementedException();
+        var userEntity = _userRepository.GetByUserIdAsync(userId).Result;
+        await _userRepository.RemoveAsync(userEntity);
     }
 
     public async Task Update(UserDTO userDTO)
     {
         var userEntity = _mapper.Map<UserEntity>(userDTO);
         await _userRepository.UpdateAsync(userEntity);
+    }
+
+    public async Task<UserDTO> GetByUserId(int userId)
+    {
+        var insulinEntity = await _userRepository.GetByUserIdAsync(userId);
+        return _mapper.Map<UserDTO>(insulinEntity);
     }
 }

@@ -11,4 +11,5 @@ public interface IUserService
     Task Add(UserDTO userDTO);
     Task Update(UserDTO userDTO);
     Task Remove(int? id);
+    Task<UserDTO> GetByUserId(int userId);
 }

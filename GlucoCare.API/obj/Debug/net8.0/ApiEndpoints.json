@@ -144,5 +144,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlucoCare.API.Controllers.UserController",
+    "Method": "Delete",
+    "RelativePath": "api/v1/User/{UserId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GlucoCare.Application.DTOs.UserDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

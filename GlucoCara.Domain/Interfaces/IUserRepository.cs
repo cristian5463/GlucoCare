@@ -11,4 +11,5 @@ public interface IUserRepository
     Task<UserEntity> CreateAsync(UserEntity user, string password);
     Task<UserEntity> UpdateAsync(UserEntity user);
     Task<UserEntity> RemoveAsync(UserEntity user);
+    Task<UserEntity> GetByUserIdAsync(int? userInt);
 }

@@ -12,7 +12,7 @@ namespace GlucoCare.source.Dtos
         [MaxLength(100)]
         public string NameInsulin { get; set; }
         public bool IndividualApplication { get; set; }
-        public int[] TypesInsulin { get; set; }
+        public int TypesInsulin { get; set; }
         public int IdUser { get; set; }
 
         public DateTime CreatedAt { get; set; }

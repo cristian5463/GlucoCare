@@ -23,9 +23,16 @@ public class UserRepository : IUserRepository
         return user;
     }
 
-    public Task<UserEntity> RemoveAsync(UserEntity user)
+    public async Task<UserEntity> GetByUserIdAsync(int? userInt)
     {
-        throw new NotImplementedException();
+        return await _userContext.User.SingleOrDefaultAsync(p => p.UserId == userInt);
+    }
+
+    public async Task<UserEntity> RemoveAsync(UserEntity user)
+    {
+        _userContext.Remove(user);
+        await _userContext.SaveChangesAsync();
+        return user;
     }
 
     public async Task<UserEntity> UpdateAsync(UserEntity user)
