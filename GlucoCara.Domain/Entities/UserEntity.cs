@@ -16,6 +16,7 @@ public class UserEntity : IdentityUser
     [Key] // Marcar como chave primária
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int UserId { get; set; }
+    public string Name { get; set; }
     public DateTime DateOfBirth { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt
@@ -23,6 +24,5 @@ public class UserEntity : IdentityUser
         get { return updatedAt; }
         private set { updatedAt = DateTime.UtcNow; }
     }
-
     public UserEntity() : base() { }
 }

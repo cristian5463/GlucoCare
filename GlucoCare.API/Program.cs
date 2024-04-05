@@ -13,7 +13,11 @@ builder.Services.AddControllers();
 builder.Services.AddInfrastructureAPI(builder.Configuration);
 
 builder.Services
-    .AddIdentity<UserEntity, IdentityRole>()
+    .AddIdentity<UserEntity, IdentityRole>(options =>
+    {
+        options.User.AllowedUserNameCharacters = ""; 
+        options.User.RequireUniqueEmail = true;
+    })
     .AddEntityFrameworkStores<UserDbContext>()
     .AddDefaultTokenProviders();
 

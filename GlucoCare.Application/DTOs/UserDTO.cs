@@ -11,8 +11,6 @@ public class UserDTO
     [Required]
     public int UserId { get; set; }
     [Required]
-    public string UserName { get; set; }
-    [Required]
     public string Email { get; set; }
     [Required]
     [DataType(DataType.Password)]
@@ -20,6 +18,8 @@ public class UserDTO
     /*[Required]
     [Compare("Password")]
     public string RePassword { get; set; }*/
+    [Required]
+    public string Name { get; set; }
     public DateTime DateOfBirth { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }

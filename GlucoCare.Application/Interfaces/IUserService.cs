@@ -1,15 +1,13 @@
 ﻿using GlucoCare.Application.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GlucoCare.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace GlucoCare.Application.Interfaces;
 public interface IUserService
 {
-    Task Add(UserDTO userDTO);
+    Task<IdentityResult> Add(UserDTO userDTO);
     Task Update(UserDTO userDTO);
     Task Remove(int? id);
     Task<UserDTO> GetByUserId(int userId);
+    Task<UserEntity> Login(LoginDTO loginDTO);
 }

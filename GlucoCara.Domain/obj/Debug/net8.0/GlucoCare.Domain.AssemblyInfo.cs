@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GlucoCare.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8877526a55292d27071ecc72327b92a23d0d601")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49296652a6f037dc24e764640c1f0b51f8f2034b")]
 [assembly: System.Reflection.AssemblyProductAttribute("GlucoCare.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GlucoCare.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

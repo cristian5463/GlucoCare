@@ -2,6 +2,7 @@
 using GlucoCare.Application.Response;
 using GlucoCare.source.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using NPOI.SS.Formula.Functions;
 
 namespace GlucoCare.API.Controllers;
 
@@ -60,7 +61,7 @@ public class InsulinController : ControllerBase
 
         await _insulinService.Update(insulinDTO);
 
-        return Ok(new Status200("Insulina Alterada"));
+        return Ok(new Status200<T>("Insulina Alterada"));
     }
 
     [HttpDelete("{id}")]
@@ -72,6 +73,6 @@ public class InsulinController : ControllerBase
             return NotFound();
         }
         await _insulinService.Remove(id);
-        return Ok(new Status200("Insulina Deletada"));
+        return Ok(new Status200<T>("Insulina Deletada"));
     }
 }

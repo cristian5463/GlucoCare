@@ -3,24 +3,32 @@ using GlucoCare.Domain.Interfaces;
 using GlucoCare.Infrastructure.Context;
 using BCrypt.Net;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace GlucoCare.Infrastructure.Repositories;
 public class UserRepository : IUserRepository
 {
     private ApplicationDbContext _userContext;
-    public UserRepository(ApplicationDbContext context)
+    private UserManager<UserEntity> _userMenager;
+
+    public UserRepository(ApplicationDbContext context, UserManager<UserEntity> userMenager)
     {
         _userContext = context;
+        _userMenager = userMenager;
     }
 
-    public async Task<UserEntity> CreateAsync(UserEntity user, string password)
+    public async Task<IdentityResult> CreateAsync(UserEntity user, string password)
     {
-        var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
-        user.PasswordHash = passwordHash;
-
-        _userContext.Add(user);
-        await _userContext.SaveChangesAsync();
-        return user;
+        try
+        {
+            IdentityResult result = await _userMenager.CreateAsync(user, password);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+        
     }
 
     public async Task<UserEntity> GetByUserIdAsync(int? userInt)

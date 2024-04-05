@@ -1,6 +1,7 @@
 ﻿using GlucoCare.Application.Interfaces;
 using GlucoCare.Application.Mappings;
 using GlucoCare.Application.Services;
+using GlucoCare.Application.Services.Tokens;
 using GlucoCare.Domain.Entities;
 using GlucoCare.Domain.Interfaces;
 using GlucoCare.Infrastructure.Context;
@@ -31,6 +32,7 @@ public static class DependencyInjectionAPI
 
         services.AddScoped<IInsulinRepository, InsulinRepository>();
         services.AddScoped<IInsulinService, InsulinService>();
+        services.AddScoped<TokenService>();
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();

@@ -170,5 +170,21 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "GlucoCare.API.Controllers.UserController",
+    "Method": "Login",
+    "RelativePath": "api/v1/User/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDTO",
+        "Type": "GlucoCare.Application.DTOs.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
