@@ -11,7 +11,6 @@ public class ApplicationDbContext : DbContext
     { }
 
     public DbSet<InsulinEntity> Insulin { get; set; }
-    public DbSet<UserEntity> User { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

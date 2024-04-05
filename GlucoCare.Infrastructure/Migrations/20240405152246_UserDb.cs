@@ -4,10 +4,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace GlucoCare.Infrastructure.Migrations.UserDb
+namespace GlucoCare.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class usermigrations : Migration
+    public partial class UserDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

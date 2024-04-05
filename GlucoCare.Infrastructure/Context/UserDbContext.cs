@@ -11,7 +11,6 @@ namespace GlucoCare.Infrastructure.Context;
 public class UserDbContext : IdentityDbContext<UserEntity>
 {
     public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
-    {
-
-    }
+    { }
+    public DbSet<UserEntity> User { get; set; }
 }

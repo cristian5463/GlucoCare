@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Identity;
 namespace GlucoCare.Infrastructure.Repositories;
 public class UserRepository : IUserRepository
 {
-    private ApplicationDbContext _userContext;
+    private UserDbContext _userContext;
     private UserManager<UserEntity> _userMenager;
 
-    public UserRepository(ApplicationDbContext context, UserManager<UserEntity> userMenager)
+    public UserRepository(UserDbContext context, UserManager<UserEntity> userMenager)
     {
         _userContext = context;
         _userMenager = userMenager;

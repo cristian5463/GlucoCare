@@ -80,7 +80,7 @@ public class UserController : ControllerBase
 
             var userEntity = new UserEntity();
 
-            Status200<string> statusInsulin = new("Insulina recuperada com sucesso.", token);
+            Status200<string> statusInsulin = new("Usuário autenticado.", token);
 
             return Ok(statusInsulin);
         }
