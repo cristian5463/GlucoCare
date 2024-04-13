@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace GlucoCare.Application.DTOs;
 public class InsulinDoseDTO
 {
-    [JsonIgnore]
     public int Id { get; set; }
     public int IdTypeInsulin { get; set; }
     public decimal Amount { get; set; }

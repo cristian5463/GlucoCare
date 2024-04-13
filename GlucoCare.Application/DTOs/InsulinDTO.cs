@@ -6,7 +6,6 @@ namespace GlucoCare.source.Dtos
 {
     public class InsulinDTO
     {
-        [JsonIgnore]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "O nome é obrigatório")]
