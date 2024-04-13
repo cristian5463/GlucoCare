@@ -33,7 +33,7 @@ public class UserRepository : IUserRepository
 
     public async Task<UserEntity> GetByUserIdAsync(int? userInt)
     {
-        return await _userContext.User.SingleOrDefaultAsync(p => p.UserId == userInt);
+        return await _userContext.User.SingleOrDefaultAsync(p => p.IdUser == userInt);
     }
 
     public async Task<UserEntity> RemoveAsync(UserEntity user)
@@ -45,14 +45,20 @@ public class UserRepository : IUserRepository
 
     public async Task<UserEntity> UpdateAsync(UserEntity user)
     {
-        var existingUser = await _userContext.User.FirstOrDefaultAsync(u => u.UserId == user.UserId);
-        //var existingUser = await _userContext.FindAsync<UserEntity>(user.UserId);
+        var existingUser = await _userContext.Users.FirstOrDefaultAsync(u => u.IdUser == user.IdUser);
 
-        // Define explicitamente quais propriedades devem ser modificadas
-        _userContext.Entry(existingUser).CurrentValues.SetValues(user);
-        _userContext.Entry(existingUser).Property(x => x.CreatedAt).IsModified = false;
+        if (existingUser != null)
+        {
+            // Atualizar as propriedades
+            existingUser.Name = user.Name;
+            existingUser.Email = user.Email;
+            // ... outras propriedades a serem atualizadas
 
-        await _userContext.SaveChangesAsync();
+            // Mantendo CreatedAt inalterado
+            _userContext.Entry(existingUser).Property(x => x.CreatedAt).IsModified = false;
+
+            await _userContext.SaveChangesAsync();
+        }
 
         return existingUser;
     }

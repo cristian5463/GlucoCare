@@ -1,9 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GlucoCare.source.Domain.Entities
 {
     public class InsulinEntity
     {
+        [Key] // Marcar como chave primária
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         private string nameInsulin;
         private bool individualApplication;

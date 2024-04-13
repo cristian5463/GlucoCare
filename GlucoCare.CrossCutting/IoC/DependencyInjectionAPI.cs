@@ -32,6 +32,10 @@ public static class DependencyInjectionAPI
 
         services.AddScoped<IInsulinRepository, InsulinRepository>();
         services.AddScoped<IInsulinService, InsulinService>();
+
+        services.AddScoped<IInsulinDoseRepository, InsulinDoseRepository>();
+        services.AddScoped<IInsulinDoseService, InsulinDoseService>();
+
         services.AddScoped<TokenService>();
 
         services.AddScoped<IUserRepository, UserRepository>();

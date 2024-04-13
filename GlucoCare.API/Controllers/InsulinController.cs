@@ -1,8 +1,11 @@
-﻿using GlucoCare.Application.Interfaces;
+﻿using GlucoCare.Application.DTOs;
+using GlucoCare.Application.Interfaces;
 using GlucoCare.Application.Response;
+using GlucoCare.Domain.Entities;
 using GlucoCare.source.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using NPOI.SS.Formula.Functions;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace GlucoCare.API.Controllers;
 
@@ -11,16 +14,21 @@ namespace GlucoCare.API.Controllers;
 public class InsulinController : ControllerBase
 {
     private readonly IInsulinService _insulinService;
+    private readonly IUserService _userService;
+    
 
-    public InsulinController(IInsulinService insulinService)
+    public InsulinController(IInsulinService insulinService, IUserService userService)
     {
         _insulinService = insulinService;
+        _userService = userService;
     }
-
+    
     [HttpGet]
     public async Task<ActionResult<IEnumerable<InsulinDTO>>> Get()
     {
-        var insulins = await _insulinService.GetInsulins();
+        UserDTO user = await _userService.GetUserIdFromToken();
+
+        var insulins = await _insulinService.GetInsulins(user.IdUser);
         return Ok(insulins);
     }
 
@@ -39,11 +47,14 @@ public class InsulinController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] InsulinDTO insulinDTO)
     {
+        UserDTO user = await _userService.GetUserIdFromToken();
+
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
 
+        insulinDTO.IdUser = user.IdUser;
         insulinDTO.CreatedAt = DateTime.UtcNow;
         await _insulinService.Add(insulinDTO);
 
@@ -54,11 +65,14 @@ public class InsulinController : ControllerBase
     [HttpPut("{id}")]
     public async Task<ActionResult> Put(int id, [FromBody] InsulinDTO insulinDTO)
     {
+        UserDTO user = await _userService.GetUserIdFromToken();
+
         if (id != insulinDTO.Id)
         {
             return BadRequest();
         }
 
+        insulinDTO.IdUser = user.IdUser;
         await _insulinService.Update(insulinDTO);
 
         return Ok(new Status200<T>("Insulina Alterada"));
@@ -67,11 +81,15 @@ public class InsulinController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<ActionResult<InsulinDTO>> Delete(int id)
     {
+        UserDTO user = await _userService.GetUserIdFromToken();
+
         var insulinDTO = await _insulinService.GetById(id);
         if (insulinDTO == null)
         {
             return NotFound();
         }
+
+        insulinDTO.IdUser = user.IdUser;
         await _insulinService.Remove(id);
         return Ok(new Status200<T>("Insulina Deletada"));
     }

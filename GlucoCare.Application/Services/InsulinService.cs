@@ -33,9 +33,9 @@ public class InsulinService : IInsulinService
         return _mapper.Map<InsulinDTO>(insulinEntity);
     }
 
-    public async Task<IEnumerable<InsulinDTO>> GetInsulins()
+    public async Task<IEnumerable<InsulinDTO>> GetInsulins(int idUser)
     {
-        var insulinEntity = await _insulinRepository.GetInsulinsAsync();
+        var insulinEntity = await _insulinRepository.GetInsulinsAsync(idUser);
         return _mapper.Map<IEnumerable<InsulinDTO>>(insulinEntity);
     }
 

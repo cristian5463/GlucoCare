@@ -3,7 +3,7 @@
 namespace GlucoCare.Domain.Interfaces;
 public interface IInsulinRepository
 {
-    Task<IEnumerable<InsulinEntity>> GetInsulinsAsync();
+    Task<IEnumerable<InsulinEntity>> GetInsulinsAsync(int idUser);
     Task<InsulinEntity> GetByIdAsync(int? id);
     Task<InsulinEntity> CreateAsync(InsulinEntity insulin);
     Task<InsulinEntity> UpdateAsync(InsulinEntity insulin);

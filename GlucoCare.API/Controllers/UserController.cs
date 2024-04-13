@@ -34,7 +34,7 @@ public class UserController : ControllerBase
 
         if (!result.Succeeded)
         {
-            return Ok(new Status400("Usuário Não Cadastrado"));
+            return BadRequest(new Status400("Usuário Não Cadastrado"));
         }
 
         return Ok(new Status200<T>("Usuário Cadastrado"));
@@ -43,7 +43,7 @@ public class UserController : ControllerBase
     [HttpPut("{UserId}")]
     public async Task<ActionResult> Put(int userID, [FromBody] UserDTO userDTO)
     {
-        if (userID != userDTO.UserId)
+        if (userID != userDTO.IdUser)
         {
             return BadRequest();
         }
@@ -59,7 +59,7 @@ public class UserController : ControllerBase
         var userDTO = await _userService.GetByUserId(userId);
         if (userDTO == null)
         {
-            return Ok(new Status400("Usuário Não Encontrado"));
+            return BadRequest(new Status400("Usuário Não Encontrado"));
         }
         await _userService.Remove(userId);
         return Ok(new Status200<T>("Usuário Deletado"));
@@ -86,7 +86,7 @@ public class UserController : ControllerBase
         }
         catch (Exception ex)
         {
-            return Ok(new Status400(ex.Message));
+            return BadRequest(new Status400(ex.Message));
         }
     }
 }

@@ -15,7 +15,7 @@ public class UserEntity : IdentityUser
     
     [Key] // Marcar como chave primária
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int UserId { get; set; }
+    public int IdUser { get; set; }
     public string Name { get; set; }
     public DateTime DateOfBirth { get; set; }
     public DateTime CreatedAt { get; set; }

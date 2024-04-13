@@ -32,9 +32,9 @@ public class InsulinRepository : IInsulinRepository
 
     }
 
-    public async Task<IEnumerable<InsulinEntity>> GetInsulinsAsync()
+    public async Task<IEnumerable<InsulinEntity>> GetInsulinsAsync(int idUser)
     {
-        return await _insulinContext.Insulin.ToListAsync();
+        return await _insulinContext.Insulin.Where(x => x.IdUser == idUser).ToListAsync();
     }
 
     public async Task<InsulinEntity> UpdateAsync(InsulinEntity insulin)

@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace GlucoCare.Application.DTOs;
 public class UserDTO
 {
-    [Required]
-    public int UserId { get; set; }
+    public int IdUser { get; set; }
     [Required]
     public string Email { get; set; }
     [Required]

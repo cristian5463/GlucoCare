@@ -10,4 +10,5 @@ public interface IUserService
     Task Remove(int? id);
     Task<UserDTO> GetByUserId(int userId);
     Task<UserEntity> Login(LoginDTO loginDTO);
+    Task<UserDTO> GetUserIdFromToken();
 }

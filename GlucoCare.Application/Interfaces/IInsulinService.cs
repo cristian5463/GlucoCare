@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace GlucoCare.Application.Interfaces;
 public interface IInsulinService
 {
-    Task<IEnumerable<InsulinDTO>> GetInsulins();
+    Task<IEnumerable<InsulinDTO>> GetInsulins(int userId);
     Task<InsulinDTO> GetById(int? id);
     Task Add(InsulinDTO insulinDTO);
     Task Update(InsulinDTO insulinDTO);

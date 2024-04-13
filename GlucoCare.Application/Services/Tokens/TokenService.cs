@@ -12,7 +12,7 @@ public class TokenService
     {
         Claim[] claims = new Claim[]
         {
-            new Claim("id", userEntity.UserId.ToString()),
+            new Claim("idUser", userEntity.IdUser.ToString()),
             new Claim("email", userEntity.Email),
             new Claim("name", userEntity.Name)
         };
