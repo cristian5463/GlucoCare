@@ -64,28 +64,36 @@ public class UserService : IUserService
 
     public async Task<UserDTO> GetUserIdFromToken()
     {
-        var request = _httpContextAccessor.HttpContext?.Request;
-        if (request == null)
+        try
         {
-            throw new Exception("Não foi possível acessar o contexto da requisição.");
+            var request = _httpContextAccessor.HttpContext?.Request;
+            if (request == null)
+            {
+                throw new Exception("Não foi possível acessar o contexto da requisição.");
+            }
+
+            var token = request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+            // Decodificar o token JWT (mesma lógica anterior)
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(token);
+            var claims = jwtSecurityToken.Claims;
+
+            var userIdClaim = claims.First(c => c.Type == "idUser");
+            var emailClaim = claims.FirstOrDefault(c => c.Type == "email");
+            var nameClaim = claims.FirstOrDefault(c => c.Type == "name");
+
+            return new UserDTO
+            {
+                IdUser = Convert.ToInt32(userIdClaim.Value),
+                Email = emailClaim.Value,
+                Name = nameClaim.Value
+            };
         }
-
-        var token = request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-
-        // Decodificar o token JWT (mesma lógica anterior)
-        var handler = new JwtSecurityTokenHandler();
-        var jwtSecurityToken = handler.ReadJwtToken(token);
-        var claims = jwtSecurityToken.Claims;
-
-        var userIdClaim = claims.First(c => c.Type == "idUser");
-        var emailClaim = claims.FirstOrDefault(c => c.Type == "email");
-        var nameClaim = claims.FirstOrDefault(c => c.Type == "name");
-
-        return new UserDTO
+        catch (Exception)
         {
-            IdUser = Convert.ToInt32(userIdClaim.Value),
-            Email = emailClaim.Value,
-            Name = nameClaim.Value
-        };
+            throw new Exception("Usuário não conectado!");
+        }
+        
     }
 }

@@ -11,6 +11,7 @@ public class InsulinDoseController : ControllerBase
 {
     private readonly IInsulinDoseService _insulinDoseService;
     private readonly IUserService _userService;
+    
     public InsulinDoseController(IInsulinDoseService insulinDoseService, IUserService userService)
     {
         _insulinDoseService = insulinDoseService;

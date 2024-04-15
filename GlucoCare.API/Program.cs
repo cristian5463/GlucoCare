@@ -38,12 +38,8 @@ app.UseCors(builder => builder
     .AllowAnyMethod() // Permitir qualquer método (GET, POST, etc.)
     .AllowAnyHeader()); // Permitir qualquer cabeçalho
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
