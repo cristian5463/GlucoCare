@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GlucoCare.CrossCutting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1dc5a15105772a530c212a7d228048155ae2a766")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49dfdef4e0c5335f18db654b52f5625a75b6ec35")]
 [assembly: System.Reflection.AssemblyProductAttribute("GlucoCare.CrossCutting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GlucoCare.CrossCutting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
