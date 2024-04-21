@@ -1,8 +1,6 @@
 using GlucoCare.Application.DTOs;
 using GlucoCare.Application.Interfaces;
-using GlucoCare.Application.Response;
 using GlucoCare.Domain.Entities;
-using GlucoCare.source.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GlucoCare.API.Controllers
@@ -13,7 +11,7 @@ namespace GlucoCare.API.Controllers
     {
         private readonly IConfigService _configService;
 
-        public ConfigController(IConfigService configService)
+        public ConfigurationsController(IConfigService configService)
         {
             _configService = configService;
         }
