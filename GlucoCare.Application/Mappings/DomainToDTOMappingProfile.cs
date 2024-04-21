@@ -12,5 +12,6 @@ public class DomainToDTOMappingProfile :Profile
         CreateMap<InsulinEntity, InsulinDTO>().ReverseMap();
         CreateMap<InsulinDoseEntity, InsulinDoseDTO>().ReverseMap();
         CreateMap<UserEntity, UserDTO>().ReverseMap();
+        CreateMap<ConfigEntity, ConfigDTO>().ReverseMap();
     }
 }
