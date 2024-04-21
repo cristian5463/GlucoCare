@@ -1,18 +1,16 @@
 using AutoMapper;
 using GlucoCare.Application.DTOs;
 using GlucoCare.Application.Interfaces;
-using GlucoCare.Domain.Entities;
 using GlucoCare.Domain.Interfaces;
+using GlucoCare.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GlucoCare.Application.Services;
 public class ConfigService : IConfigService
 {
-    private IConfigRepository _configRepository;
+    private readonly IConfigRepository _configRepository;
     private readonly IMapper _mapper;
 
     public ConfigService(IMapper mapper, IConfigRepository configRepository)
@@ -27,7 +25,7 @@ public class ConfigService : IConfigService
         await _configRepository.CreateAsync(configEntity);
     }
 
-    public async Task<ConfigDTO> GetById(int? id)
+    public async Task<ConfigDTO> GetById(int id)
     {
         var configEntity = await _configRepository.GetByIdAsync(id);
         return _mapper.Map<ConfigDTO>(configEntity);
@@ -39,7 +37,7 @@ public class ConfigService : IConfigService
         return _mapper.Map<IEnumerable<ConfigDTO>>(configEntities);
     }
 
-    public async Task Remove(int? id)
+    public async Task Remove(int id)
     {
         var configEntity = await _configRepository.GetByIdAsync(id);
         if (configEntity != null)
@@ -52,6 +50,7 @@ public class ConfigService : IConfigService
         await _configRepository.UpdateAsync(configEntity);
     }
 
+    // Implementação dos métodos da interface IConfigService
     public async Task UpdateConfiguration(int id, ConfigDTO configDTO)
     {
         var configEntity = await _configRepository.GetByIdAsync(id);
