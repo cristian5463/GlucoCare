@@ -1,61 +1,105 @@
 using GlucoCare.Application.DTOs;
 using GlucoCare.Application.Interfaces;
-using GlucoCare.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GlucoCare.API.Controllers
 {
+    [Route("api/v1/[controller]")]
     [ApiController]
-    [Route("api/[controller]")]
-    public class ConfigurationsController : ControllerBase
+    public class ConfigController : ControllerBase
     {
         private readonly IConfigService _configService;
 
-        public ConfigurationsController(IConfigService configService)
+        public ConfigController(IConfigService configService)
         {
             _configService = configService;
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<ConfigDto> GetConfigById(int id)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ConfigDTO>>> Get()
         {
-            var config = _configService.GetConfigById(id);
-            if (config == null)
+            try
             {
-                return NotFound();
+                var configs = await _configService.GetAll();
+                return Ok(configs);
             }
-            return Ok(config);
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{id}", Name = "GetConfig")]
+        public async Task<ActionResult<ConfigDTO>> Get(int id)
+        {
+            try
+            {
+                var config = await _configService.GetById(id);
+                if (config == null)
+                {
+                    return NotFound("Configuração não encontrada!");
+                }
+                return Ok(config);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
-        public ActionResult<ConfigDto> CreateConfiguration([FromBody] ConfigDto configDto)
+        public async Task<ActionResult<ConfigDTO>> Post([FromBody] ConfigDTO configDTO)
         {
-            var createdConfig = _configService.CreateConfiguration(configDto);
-            return CreatedAtAction(nameof(GetConfigById), new { id = createdConfig.Id }, createdConfig);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                await _configService.Add(configDTO);
+                return CreatedAtAction(nameof(Get), new { id = configDTO.Id }, configDTO);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
-        public ActionResult<ConfigDto> UpdateConfiguration(int id, [FromBody] ConfigDto configDto)
+        public async Task<ActionResult> Put(int id, [FromBody] ConfigDTO configDTO)
         {
-            var updatedConfig = _configService.UpdateConfiguration(id, configDto);
-            if (updatedConfig == null)
+            if (id != configDTO.Id)
             {
-                return NotFound();
+                return BadRequest("O ID fornecido não corresponde ao ID do objeto.");
             }
-            return Ok(updatedConfig);
+
+            try
+            {
+                await _configService.Update(configDTO);
+                return Ok("Configuração alterada com sucesso");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteConfiguration(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            var config = _configService.GetConfigurationById(id);
-            if (config == null)
+            try
             {
-                return NotFound();
+                await _configService.Remove(id);
+                return Ok("Configuração deletada com sucesso");
             }
-
-            _configService.DeleteConfiguration(id);
-            return NoContent();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
