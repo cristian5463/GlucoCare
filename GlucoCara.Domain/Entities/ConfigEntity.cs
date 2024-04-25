@@ -10,7 +10,8 @@ namespace GlucoCare.Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         private bool _applyInsulinSnack;
         private bool _useCarbsCalc;
-        public int idUser { get; set; }
+        public int Id { get; set; }
+        private int idUser;
 
         public ConfigEntity(int idUser, bool applyInsulinSnack, bool useCarbsCalc)
         {
