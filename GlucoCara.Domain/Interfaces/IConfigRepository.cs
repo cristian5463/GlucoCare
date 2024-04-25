@@ -1,13 +1,12 @@
 using GlucoCare.Domain.Entities;
+using GlucoCare.source.Domain.Entities;
 
-namespace GlucoCare.Domain.Interfaces
+namespace GlucoCare.Domain.Interfaces;
+public interface IConfigRepository
 {
-    public interface IConfigRepository
-    {
-        ConfigEntity GetById(int id);
-        IEnumerable<ConfigEntity> GetAll();
-        void Add(ConfigEntity config);
-        void Update(ConfigEntity config);
-        void Delete(int id);
-    }
+    Task<IEnumerable<ConfigEntity>> GetConfigAsync(int idUser);
+    Task<ConfigEntity> GetByIdAsync(int? id);
+    Task<ConfigEntity> CreateAsync(ConfigEntity config);
+    Task<ConfigEntity> UpdateAsync(ConfigEntity config);
+    Task<ConfigEntity> RemoveAsync(ConfigEntity config);
 }
