@@ -13,7 +13,7 @@ namespace GlucoCare.Domain.Entities
 
         public ConfigEntity(int idUser, bool applyInsulinSnack, bool useCarbsCalc)
         {
-            idUser = idUser;
+            IdUser = idUser;
             _applyInsulinSnack = applyInsulinSnack;
             _useCarbsCalc = useCarbsCalc;
         }
@@ -28,6 +28,11 @@ namespace GlucoCare.Domain.Entities
         {
             get { return _useCarbsCalc; }
             set { _useCarbsCalc = value; }
+        }
+        public int IdUser
+        {
+            get { return idUser; }
+            private set { idUser = value; }
         }
     }
 }
