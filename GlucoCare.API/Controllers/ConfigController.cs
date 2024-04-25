@@ -1,5 +1,7 @@
 using GlucoCare.Application.DTOs;
 using GlucoCare.Application.Interfaces;
+using GlucoCare.Application.Services;
+using GlucoCare.source.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,20 +18,6 @@ namespace GlucoCare.API.Controllers
         public ConfigController(IConfigService configService)
         {
             _configService = configService;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ConfigDTO>>> Get()
-        {
-            try
-            {
-                var configs = await _configService.GetAll();
-                return Ok(configs);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
 
         [HttpGet("{id}", Name = "GetConfig")]
