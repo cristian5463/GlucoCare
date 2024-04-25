@@ -17,7 +17,7 @@ public class ConfigRepository : IConfigRepository
     public async Task<IEnumerable<ConfigEntity>> GetConfigAsync(int idUser)
     {
         return await _configContext.Set<ConfigEntity>()
-            .Where(c => c.Id == idUser)
+            .Where(c => c.idUser == idUser)
             .ToListAsync();
     }
 
