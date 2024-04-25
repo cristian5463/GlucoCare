@@ -1,6 +1,7 @@
-using GlucoCare.Domain.Entities;
 using GlucoCare.Domain.Interfaces;
-using Microsoft.EntityFrameworkCore; // Exemplo, ajuste de acordo com seu ORM
+using GlucoCare.Infrastructure.Context;
+using GlucoCare.source.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace GlucoCare.Infrastructure.Repositories;
 public class ConfigRepository : IConfigRepository
