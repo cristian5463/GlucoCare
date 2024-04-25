@@ -9,9 +9,11 @@ namespace GlucoCare.Domain.Entities
         [Key] 
         private bool _applyInsulinSnack;
         private bool _useCarbsCalc;
+        public int Id { get; set; }
 
-        public ConfigEntity(bool applyInsulinSnack, bool useCarbsCalc)
+        public ConfigEntity(int idUser, bool applyInsulinSnack, bool useCarbsCalc)
         {
+            Id = idUser;
             _applyInsulinSnack = applyInsulinSnack;
             _useCarbsCalc = useCarbsCalc;
         }
