@@ -7,43 +7,43 @@ using Microsoft.EntityFrameworkCore;
 namespace GlucoCare.Infrastructure.Repositories;
 public class ConfigRepository : IConfigRepository
 {
-    private readonly DbContext _context;
+    private ApplicationDbContext _configContext;
 
-    public ConfigRepository(DbContext context)
+    public ConfigRepository(ApplicationDbContext context)
     {
-        _context = context;
+        _configContext = context;
     }
 
     public async Task<IEnumerable<ConfigEntity>> GetConfigAsync(int idUser)
     {
-        return await _context.Set<ConfigEntity>()
+        return await _configContext.Set<ConfigEntity>()
             .Where(c => c.Id == idUser)
             .ToListAsync();
     }
 
     public async Task<ConfigEntity> GetByIdAsync(int? id)
     {
-        return await _context.Set<ConfigEntity>().FindAsync(id);
+        return await _configContext.Set<ConfigEntity>().FindAsync(id);
     }
 
     public async Task<ConfigEntity> CreateAsync(ConfigEntity config)
     {
-        _context.Add(config);
-        await _context.SaveChangesAsync();
+        _configContext.Add(config);
+        await _configContext.SaveChangesAsync();
         return config;
     }
 
     public async Task<ConfigEntity> UpdateAsync(ConfigEntity config)
     {
-        _context.Entry(config).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
+        _configContext.Entry(config).State = EntityState.Modified;
+        await _configContext.SaveChangesAsync();
         return config;
     }
 
     public async Task<ConfigEntity> RemoveAsync(ConfigEntity config)
     {
-        _context.Remove(config);
-        await _context.SaveChangesAsync();
+        _configContext.Remove(config);
+        await _configContext.SaveChangesAsync();
         return config;
     }
 }
