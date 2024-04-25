@@ -12,6 +12,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<InsulinEntity> Insulin { get; set; }
     public DbSet<InsulinDoseEntity> InsulinDose { get; set; }
+    public DbSet<ConfigEntity> Config { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
