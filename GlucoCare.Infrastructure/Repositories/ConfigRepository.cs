@@ -1,4 +1,5 @@
 using GlucoCare.Domain.Interfaces;
+using GlucoCare.Domain.Entities;
 using GlucoCare.Infrastructure.Context;
 using GlucoCare.source.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
