@@ -9,9 +9,9 @@ namespace GlucoCare.Application.Interfaces
 {
     public interface IConfigService
     {
-        ConfigDto GetConfigurationById(int id);
-        ConfigDto CreateConfiguration(ConfigDto configDto);
-        ConfigDto UpdateConfiguration(int id, ConfigDto configDto);
-        void DeleteConfiguration(int id);
+        Task<ConfigDTO> GetById(int? id);
+        Task Add(ConfigDTO ConfigDTO);
+        Task Update(ConfigDTO ConfigDTO);
+        Task Remove(int? id);
     }
 }
