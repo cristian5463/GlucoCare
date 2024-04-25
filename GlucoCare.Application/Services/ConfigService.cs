@@ -33,17 +33,17 @@ public class ConfigService : IConfigService
         return _mapper.Map<ConfigDTO>(configEntity);
     }
 
-    public async Task<IEnumerable<ConfigDTO>> GetAll()
+    public async Task<IEnumerable<ConfigDTO>> GetConfig(int idUser)
     {
-        var configEntities = await _configRepository.GetAllAsync();
-        return _mapper.Map<IEnumerable<ConfigDTO>>(configEntities);
+        var configEntity = await _configRepository.GetConfigAsync(idUser);
+        return _mapper.Map<IEnumerable<ConfigDTO>>(configEntity);
     }
 
     public async Task Remove(int? id)
     {
-        var configEntity = await _configRepository.GetByIdAsync(id).Result;
+        var configEntity = _configRepository.GetByIdAsync(id).Result;
         await _configRepository.RemoveAsync(configEntity);
-        
+
     }
 
     public async Task Update(ConfigDTO configDTO)
