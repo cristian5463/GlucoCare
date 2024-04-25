@@ -1,13 +1,14 @@
+using GlucoCare.Domain.Entities;
+using GlucoCare.source.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GlucoCare.source.Domain.Entities
+namespace GlucoCareApi.source.Domain.Entities
 {
     public class ConfigEntityConfiguration : IEntityTypeConfiguration<ConfigEntity>
     {
         public void Configure(EntityTypeBuilder<ConfigEntity> builder)
         {
-            builder.HasKey(c => c.Id);
 
             builder.Property(c => c.ApplyInsulinSnack)
                 .IsRequired();
