@@ -41,6 +41,9 @@ public static class DependencyInjectionAPI
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
 
+        services.AddScoped<IConfigRepository, ConfigRepository>();
+        services.AddScoped<IConfigService, ConfigService>();
+
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
         return services;
