@@ -325,16 +325,11 @@
   {
     "ContainingType": "GlucoCare.API.Controllers.UserController",
     "Method": "Put",
-    "RelativePath": "api/v1/User/{UserId}",
+    "RelativePath": "api/v1/User",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "userID",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
       {
         "Name": "userDTO",
         "Type": "GlucoCare.Application.DTOs.UserDTO",
@@ -346,17 +341,31 @@
   {
     "ContainingType": "GlucoCare.API.Controllers.UserController",
     "Method": "Delete",
-    "RelativePath": "api/v1/User/{UserId}",
+    "RelativePath": "api/v1/User",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
+    "Parameters": [],
+    "ReturnTypes": [
       {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Type": "GlucoCare.Application.DTOs.UserDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
-    ],
+    ]
+  },
+  {
+    "ContainingType": "GlucoCare.API.Controllers.UserController",
+    "Method": "Get",
+    "RelativePath": "api/v1/User",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "GlucoCare.Application.DTOs.UserDTO",

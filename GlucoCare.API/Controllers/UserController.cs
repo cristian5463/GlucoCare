@@ -40,28 +40,41 @@ public class UserController : ControllerBase
         return Ok(new Status200<T>("Usuário Cadastrado"));
     }
 
-    [HttpPut("{UserId}")]
-    public async Task<ActionResult> Put(int userID, [FromBody] UserDTO userDTO)
+    [HttpPut]
+    public async Task<ActionResult> Put([FromBody] UserDTO userDTO)
     {
-        if (userID != userDTO.IdUser)
+        UserDTO user = await _userService.GetUserIdFromToken();
+
+        try
         {
-            return BadRequest();
+            userDTO.IdUser = user.IdUser;
+
+            await _userService.Update(userDTO);
+
+            var newUserDTO = await _userService.GetByUserId(user.IdUser);
+
+            Status200<UserDTO> statusUser = new("Usuário alterado.", newUserDTO);
+
+            return Ok(statusUser);
         }
-
-        await _userService.Update(userDTO);
-
-        return Ok(new Status200<T>("Usuário Alterado"));
+        catch (Exception ex)
+        {
+            return BadRequest(new Status400("Não foi possível atualizar o cadastros. - " + ex.Message));
+        }
+        
     }
 
-    [HttpDelete("{UserId}")]
-    public async Task<ActionResult<UserDTO>> Delete(int userId)
+    [HttpDelete]
+    public async Task<ActionResult<UserDTO>> Delete()
     {
-        var userDTO = await _userService.GetByUserId(userId);
+        UserDTO user = await _userService.GetUserIdFromToken();
+
+        var userDTO = await _userService.GetByUserId(user.IdUser);
         if (userDTO == null)
         {
             return BadRequest(new Status400("Usuário Não Encontrado"));
         }
-        await _userService.Remove(userId);
+        await _userService.Remove(user.IdUser);
         return Ok(new Status200<T>("Usuário Deletado"));
     }
 
@@ -88,5 +101,18 @@ public class UserController : ControllerBase
         {
             return BadRequest(new Status400(ex.Message));
         }
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<UserDTO>> Get()
+    {
+        UserDTO user = await _userService.GetUserIdFromToken();
+
+        var userDTO = await _userService.GetByUserId(user.IdUser);
+        if (userDTO == null)
+        {
+            return NotFound("Usuário Não Encontrado");
+        }
+        return Ok(userDTO);
     }
 }
