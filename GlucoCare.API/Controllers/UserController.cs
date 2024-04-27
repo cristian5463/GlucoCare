@@ -49,6 +49,7 @@ public class UserController : ControllerBase
         try
         {
             userDTO.IdUser = user.IdUser;
+            userDTO.Password = user.Password;
 
             await _userService.Update(userDTO);
 
