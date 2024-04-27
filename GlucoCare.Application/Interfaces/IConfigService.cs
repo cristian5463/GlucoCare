@@ -10,6 +10,7 @@ namespace GlucoCare.Application.Interfaces
     public interface IConfigService
     {
         Task<ConfigDTO> GetById(int? id);
+        Task<ConfigDTO> GetConfig(int idUser);
         Task Add(ConfigDTO ConfigDTO);
         Task Update(ConfigDTO ConfigDTO);
         Task Remove(int? id);

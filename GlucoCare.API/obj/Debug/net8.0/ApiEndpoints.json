@@ -1,44 +1,12 @@
 [
   {
     "ContainingType": "GlucoCare.API.Controllers.ConfigController",
-    "Method": "Post",
-    "RelativePath": "api/v1/Config",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "configDTO",
-        "Type": "GlucoCare.Application.DTOs.ConfigDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "GlucoCare.Application.DTOs.ConfigDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "GlucoCare.API.Controllers.ConfigController",
     "Method": "Get",
-    "RelativePath": "api/v1/Config/{id}",
+    "RelativePath": "api/v1/Config",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "GlucoCare.Application.DTOs.ConfigDTO",

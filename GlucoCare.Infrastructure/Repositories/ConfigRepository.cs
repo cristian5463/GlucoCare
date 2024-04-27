@@ -14,11 +14,10 @@ public class ConfigRepository : IConfigRepository
         _configContext = context;
     }
 
-    public async Task<IEnumerable<ConfigEntity>> GetConfigAsync(int idUser)
+    public async Task<ConfigEntity> GetConfigAsync(int idUser)
     {
         return await _configContext.Set<ConfigEntity>()
-            .Where(c => c.Id == idUser)
-            .ToListAsync();
+            .FirstOrDefaultAsync(c => c.IdUser == idUser);
     }
 
     public async Task<ConfigEntity> GetByIdAsync(int? id)

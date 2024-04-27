@@ -13,43 +13,38 @@ namespace GlucoCare.API.Controllers
     [ApiController]
     public class ConfigController : ControllerBase
     {
+        private readonly IUserService _userService;
         private readonly IConfigService _configService;
 
-        public ConfigController(IConfigService configService)
+        public ConfigController(IConfigService configService, IUserService userService)
         {
             _configService = configService;
+            _userService = userService;
         }
 
-        [HttpGet("{id}", Name = "GetConfig")]
-        public async Task<ActionResult<ConfigDTO>> Get(int id)
+        [HttpGet]
+        public async Task<ActionResult<ConfigDTO>> Get()
         {
+            UserDTO user = await _userService.GetUserIdFromToken();
+
             try
             {
-                var config = await _configService.GetById(id);
+                var config = await _configService.GetConfig(user.IdUser);
                 if (config == null)
                 {
-                    return NotFound("Configuração não encontrada!");
+                    ConfigDTO configDTO = new ConfigDTO();
+
+                    configDTO.IdUser = user.IdUser;
+                    configDTO.ApplyInsulinSnack = false;
+                    configDTO.UseCarbsCalc = false;
+
+                    await _configService.Add(configDTO);
+                    var newconfig = await _configService.GetConfig(user.IdUser);
+
+                    return Ok(newconfig);
                 }
+
                 return Ok(config);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<ConfigDTO>> Post([FromBody] ConfigDTO configDTO)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            try
-            {
-                await _configService.Add(configDTO);
-                return CreatedAtAction(nameof(Get), new { id = configDTO.Id }, configDTO);
             }
             catch (Exception ex)
             {
@@ -60,6 +55,8 @@ namespace GlucoCare.API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] ConfigDTO configDTO)
         {
+            UserDTO user = await _userService.GetUserIdFromToken();
+
             if (id != configDTO.Id)
             {
                 return BadRequest("O ID fornecido não corresponde ao ID do objeto.");
@@ -79,6 +76,8 @@ namespace GlucoCare.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
+            UserDTO user = await _userService.GetUserIdFromToken();
+
             try
             {
                 await _configService.Remove(id);

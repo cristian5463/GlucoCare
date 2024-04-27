@@ -4,7 +4,7 @@ using GlucoCare.source.Domain.Entities;
 namespace GlucoCare.Domain.Interfaces;
 public interface IConfigRepository
 {
-    Task<IEnumerable<ConfigEntity>> GetConfigAsync(int idUser);
+    Task<ConfigEntity> GetConfigAsync(int idUser);
     Task<ConfigEntity> GetByIdAsync(int? id);
     Task<ConfigEntity> CreateAsync(ConfigEntity config);
     Task<ConfigEntity> UpdateAsync(ConfigEntity config);

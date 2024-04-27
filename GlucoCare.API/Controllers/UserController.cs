@@ -15,6 +15,7 @@ public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
     private TokenService _tokenService;
+    private readonly IConfigService _configService;
 
     public UserController(IUserService userService, TokenService tokenService)
     {
@@ -34,7 +35,7 @@ public class UserController : ControllerBase
 
         if (!result.Succeeded)
         {
-            return BadRequest(new Status400("Usuário Não Cadastrado"));
+            return BadRequest(new Status400("Usuário Não Adicionado!"));
         }
 
         return Ok(new Status200<T>("Usuário Cadastrado"));

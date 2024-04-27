@@ -12,4 +12,5 @@ public class ConfigDTO
     public int Id { get; set; }
     public bool ApplyInsulinSnack { get; set; }
     public bool UseCarbsCalc { get; set; }
+    public int IdUser {  get; set; }
 }
