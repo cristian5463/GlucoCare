@@ -52,8 +52,8 @@ namespace GlucoCare.API.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] ConfigDTO configDTO)
+        [HttpPut]
+        public async Task<ActionResult> Put([FromBody] ConfigDTO configDTO)
         {
             UserDTO user = await _userService.GetUserIdFromToken();
 
