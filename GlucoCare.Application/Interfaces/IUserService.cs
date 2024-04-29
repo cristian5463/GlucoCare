@@ -6,7 +6,7 @@ namespace GlucoCare.Application.Interfaces;
 public interface IUserService
 {
     Task<IdentityResult> Add(UserDTO userDTO);
-    Task Update(UserDTO userDTO);
+    Task Update(UserUpdateDTO userDTO);
     Task Remove(int? id);
     Task<UserDTO> GetByUserId(int userId);
     Task<UserEntity> Login(LoginDTO loginDTO);

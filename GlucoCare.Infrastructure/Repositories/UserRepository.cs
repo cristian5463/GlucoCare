@@ -43,7 +43,7 @@ public class UserRepository : IUserRepository
         return user;
     }
 
-    public async Task<UserEntity> UpdateAsync(UserEntity user)
+    public async Task<UserEntity> UpdateAsync(UserUpdateEntity user)
     {
         var existingUser = await _userContext.Users.FirstOrDefaultAsync(u => u.IdUser == user.IdUser);
 

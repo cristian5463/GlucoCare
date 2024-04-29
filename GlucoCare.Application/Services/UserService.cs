@@ -40,9 +40,9 @@ public class UserService : IUserService
         await _userRepository.RemoveAsync(userEntity);
     }
 
-    public async Task Update(UserDTO userDTO)
+    public async Task Update(UserUpdateDTO userDTO)
     {
-        var userEntity = _mapper.Map<UserEntity>(userDTO);
+        var userEntity = _mapper.Map<UserUpdateEntity>(userDTO);
         await _userRepository.UpdateAsync(userEntity);
     }
 

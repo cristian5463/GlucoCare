@@ -10,7 +10,7 @@ namespace GlucoCare.Domain.Interfaces;
 public interface IUserRepository
 {
     Task<IdentityResult> CreateAsync(UserEntity user, string password);
-    Task<UserEntity> UpdateAsync(UserEntity user);
+    Task<UserEntity> UpdateAsync(UserUpdateEntity user);
     Task<UserEntity> RemoveAsync(UserEntity user);
     Task<UserEntity> GetByUserIdAsync(int? userInt);
 }

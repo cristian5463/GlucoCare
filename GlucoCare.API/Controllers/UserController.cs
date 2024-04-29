@@ -42,15 +42,13 @@ public class UserController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<ActionResult> Put([FromBody] UserDTO userDTO)
+    public async Task<ActionResult> Put([FromBody] UserUpdateDTO userDTO)
     {
         UserDTO user = await _userService.GetUserIdFromToken();
 
         try
         {
             userDTO.IdUser = user.IdUser;
-            userDTO.Password = user.Password;
-
             await _userService.Update(userDTO);
 
             var newUserDTO = await _userService.GetByUserId(user.IdUser);

@@ -300,7 +300,7 @@
     "Parameters": [
       {
         "Name": "userDTO",
-        "Type": "GlucoCare.Application.DTOs.UserDTO",
+        "Type": "GlucoCare.Application.DTOs.UserUpdateDTO",
         "IsRequired": true
       }
     ],
