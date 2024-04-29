@@ -57,13 +57,9 @@ namespace GlucoCare.API.Controllers
         {
             UserDTO user = await _userService.GetUserIdFromToken();
 
-            if (id != configDTO.Id)
-            {
-                return BadRequest("O ID fornecido não corresponde ao ID do objeto.");
-            }
-
             try
             {
+                configDTO.IdUser = user.IdUser;
                 await _configService.Update(configDTO);
                 return Ok("Configuração alterada com sucesso");
             }

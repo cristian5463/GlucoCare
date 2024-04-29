@@ -34,8 +34,17 @@ public class ConfigRepository : IConfigRepository
 
     public async Task<ConfigEntity> UpdateAsync(ConfigEntity config)
     {
-        _configContext.Entry(config).State = EntityState.Modified;
-        await _configContext.SaveChangesAsync();
+        var existingConfig = await _configContext.Config
+          .Where(c => c.IdUser == config.IdUser)
+          .FirstOrDefaultAsync();
+
+        if (existingConfig != null)
+        {
+            existingConfig.ApplyInsulinSnack = config.ApplyInsulinSnack;
+            existingConfig.UseCarbsCalc = config.UseCarbsCalc;
+            await _configContext.SaveChangesAsync();
+        }
+        
         return config;
     }
 
