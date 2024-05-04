@@ -35,8 +35,13 @@ public class UserController : ControllerBase
 
         if (!result.Succeeded)
         {
-            return BadRequest(new Status400("Usuário Não Adicionado!"));
+            var errors = result.Errors.Select(error => error.Description).ToList();
+
+            var errorMessage = string.Join("\n", errors);
+
+            return StatusCode(409, errorMessage);
         }
+
 
         return Ok(new Status200<T>("Usuário Cadastrado"));
     }

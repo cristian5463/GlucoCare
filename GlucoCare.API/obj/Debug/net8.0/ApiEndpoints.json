@@ -22,16 +22,11 @@
   {
     "ContainingType": "GlucoCare.API.Controllers.ConfigController",
     "Method": "Put",
-    "RelativePath": "api/v1/Config/{id}",
+    "RelativePath": "api/v1/Config",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
       {
         "Name": "configDTO",
         "Type": "GlucoCare.Application.DTOs.ConfigDTO",
