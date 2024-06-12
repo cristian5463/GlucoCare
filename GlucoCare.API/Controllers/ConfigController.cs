@@ -1,11 +1,6 @@
 using GlucoCare.Application.DTOs;
 using GlucoCare.Application.Interfaces;
-using GlucoCare.Application.Services;
-using GlucoCare.source.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace GlucoCare.API.Controllers
 {

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GlucoCara.Domain\GlucoCare.Domain.csproj" />
+    <ProjectReference Include="..\GlucoCare.Infrastructure\GlucoCare.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
