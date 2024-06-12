@@ -44,6 +44,9 @@ public static class DependencyInjectionAPI
         services.AddScoped<IConfigRepository, ConfigRepository>();
         services.AddScoped<IConfigService, ConfigService>();
 
+        services.AddScoped<IGlucoseReadingRepository, GlucoseReadingRepository>();
+        services.AddScoped<IGlucoseReadingService, GlucoseReadingService>();
+
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
         return services;

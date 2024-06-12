@@ -14,3 +14,5 @@ C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\refint\GlucoCare.Application
 C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCare.Application.pdb
 C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\ref\GlucoCare.Application.dll
 C:\GlucoCare\GlucoCare.Application\obj\Debug\net8.0\GlucoCare.Application.sourcelink.json
+C:\GlucoCare\GlucoCare.Application\bin\Debug\net8.0\GlucoCare.Infrastructure.dll
+C:\GlucoCare\GlucoCare.Application\bin\Debug\net8.0\GlucoCare.Infrastructure.pdb

@@ -11,6 +11,7 @@
           "AutoMapper": "13.0.1",
           "BCrypt.Net-Next": "4.0.3",
           "GlucoCare.Domain": "1.0.0",
+          "GlucoCare.Infrastructure": "1.0.0",
           "Microsoft.AspNet.Identity.Owin": "2.2.4",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.3",
@@ -727,6 +728,28 @@
           }
         }
       },
+      "Pomelo.EntityFrameworkCore.Lolita/6.0.5": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "8.0.3"
+        },
+        "runtime": {
+          "lib/net6.0/Pomelo.EntityFrameworkCore.Lolita.dll": {
+            "assemblyVersion": "6.0.5.0",
+            "fileVersion": "6.0.5.0"
+          }
+        }
+      },
+      "Pomelo.EntityFrameworkCore.Lolita.PostgreSQL/6.0.5": {
+        "dependencies": {
+          "Pomelo.EntityFrameworkCore.Lolita": "6.0.5"
+        },
+        "runtime": {
+          "lib/net6.0/Pomelo.EntityFrameworkCore.Lolita.PostgreSQL.dll": {
+            "assemblyVersion": "6.0.5.0",
+            "fileVersion": "6.0.5.0"
+          }
+        }
+      },
       "SharpZipLib/1.3.3": {
         "runtime": {
           "lib/netstandard2.1/ICSharpCode.SharpZipLib.dll": {
@@ -905,6 +928,21 @@
         },
         "runtime": {
           "GlucoCare.Domain.dll": {}
+        }
+      },
+      "GlucoCare.Infrastructure/1.0.0": {
+        "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
+          "GlucoCare.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.3",
+          "Microsoft.EntityFrameworkCore": "8.0.3",
+          "Microsoft.Extensions.Identity.Core": "8.0.3",
+          "Microsoft.Extensions.Identity.Stores": "8.0.3",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.2",
+          "Pomelo.EntityFrameworkCore.Lolita.PostgreSQL": "6.0.5"
+        },
+        "runtime": {
+          "GlucoCare.Infrastructure.dll": {}
         }
       }
     }
@@ -1349,6 +1387,20 @@
       "path": "owin/1.0.0",
       "hashPath": "owin.1.0.0.nupkg.sha512"
     },
+    "Pomelo.EntityFrameworkCore.Lolita/6.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tqzAvnynSpK7NT5JJJ3C5pBsN4efzlxfg8+s1ngDpyvQ34qNLOReOLgwBdn6/NhPmCWJIv97AnYdPGKjaVsseA==",
+      "path": "pomelo.entityframeworkcore.lolita/6.0.5",
+      "hashPath": "pomelo.entityframeworkcore.lolita.6.0.5.nupkg.sha512"
+    },
+    "Pomelo.EntityFrameworkCore.Lolita.PostgreSQL/6.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UGNOWM+7rFOtwOAJvozmmGLK0Q2Vaqmmc4O+aTPHKiUX8GxpFOVhZnGRo5jC4V5jpgqREFITX+QKR9QZ1tWksA==",
+      "path": "pomelo.entityframeworkcore.lolita.postgresql/6.0.5",
+      "hashPath": "pomelo.entityframeworkcore.lolita.postgresql.6.0.5.nupkg.sha512"
+    },
     "SharpZipLib/1.3.3": {
       "type": "package",
       "serviceable": true,
@@ -1476,6 +1528,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "GlucoCare.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GlucoCare.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

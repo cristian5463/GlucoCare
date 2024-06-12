@@ -10,14 +10,14 @@ public class GlucoseReadingEntity
 
     private int _valueGlucose;
     private DateTime _readingDate;
-    private DateTime _readingTime;
+    private TimeSpan _readingTime;
     private int _idTypeInsulin;
     private int _insulinDose;
 
-    public GlucoseReadingEntity(int valueGlucose, DateTime readingDate, DateTime readingTime, int idTypeInsulin, int insulinDose)
+    public GlucoseReadingEntity(int valueGlucose, DateTime readingDate, TimeSpan readingTime, int idTypeInsulin, int insulinDose)
     {
         ValueGlucose = valueGlucose;
-        ReadingDate = readingDate;
+        ReadingDate = readingDate.Date;
         ReadingTime = readingTime;
         IdTypeInsulin = idTypeInsulin;
         InsulinDose = insulinDose;
@@ -50,7 +50,7 @@ public class GlucoseReadingEntity
         }
     }
 
-    public DateTime ReadingTime
+    public TimeSpan ReadingTime
     {
         get => _readingTime;
         private set
