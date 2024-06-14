@@ -1,8 +1,10 @@
-﻿using GlucoCare.Application.DTOs;
+﻿using GlucoCare.API.Response;
+using GlucoCare.Application.DTOs;
 using GlucoCare.Application.Interfaces;
 using GlucoCare.Application.Response;
 using GlucoCare.Application.Services;
 using GlucoCare.source.Dtos;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using NPOI.SS.Formula.Functions;
 
@@ -100,5 +102,31 @@ public class GlucoseReadingController(
         glucoseReadingDto.IdUser = user.IdUser;
         await glucoseReadingService.Remove(id);
         return Ok("Leitura deletada!");
+    }
+
+    [HttpPost("CalculateSuggestedDose")]
+    public async Task<IActionResult> GetSuggestedDose([FromBody] SuggestedDoseDTO suggestedDoseDto)
+    {
+        try
+        {
+            UserDTO user = await userService.GetUserIdFromToken();
+
+            suggestedDoseDto.IdUser = user.IdUser;
+            var suggestedDose = await glucoseReadingService.GetSuggestedDose(suggestedDoseDto);
+
+            return Ok(new SuggestedDoseResponse()
+            {
+                SuggestedDose = suggestedDose,
+            });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new SuggestedDoseResponse()
+            {
+                SuggestedDose = 0,
+                StatusCode = 400,
+                Error = ex.Message
+            });
+        }
     }
 }

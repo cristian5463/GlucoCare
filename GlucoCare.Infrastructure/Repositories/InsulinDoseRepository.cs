@@ -22,6 +22,11 @@ public class InsulinDoseRepository : IInsulinDoseRepository
     {
         return await _insulinDoseContext.InsulinDose.SingleOrDefaultAsync(p => p.Id == id);
     }
+    
+    public async Task<InsulinDoseEntity> GetByIdTypeInsulinAsync(int? idTypeInsulin)
+    {
+        return await _insulinDoseContext.InsulinDose.SingleOrDefaultAsync(p => p.IdTypeInsulin == idTypeInsulin);
+    }
 
     public async Task<IEnumerable<InsulinDoseEntity>> GetInsulinDosesAsync(int idUser)
     {

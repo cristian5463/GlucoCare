@@ -2,12 +2,11 @@
 using GlucoCare.Application.Interfaces;
 using GlucoCare.Domain.Entities;
 using GlucoCare.Domain.Interfaces;
-using GlucoCare.Infrastructure.Repositories;
 using GlucoCare.source.Dtos;
 
 namespace GlucoCare.Application.Services;
 
-public class GlucoseReadingService(IMapper mapper, IGlucoseReadingRepository glucoseReadingRepository) : IGlucoseReadingService
+public class GlucoseReadingService(IMapper mapper, IGlucoseReadingRepository glucoseReadingRepository, IInsulinDoseRepository insulinDoseRepository) : IGlucoseReadingService
 {
     public async Task<IEnumerable<GlucoseReadingDTO>> GetGlucoseReadings(int userId)
     {
@@ -39,8 +38,49 @@ public class GlucoseReadingService(IMapper mapper, IGlucoseReadingRepository glu
         await glucoseReadingRepository.RemoveAsync(glucoseReadingEntity);
     }
 
-    public Task GetSuggestedDose(int idInsulin, int valueGlucose)
+    public Task<decimal> GetSuggestedDose(SuggestedDoseDTO suggestedDoseDto)
     {
-        throw new NotImplementedException();
+        if (suggestedDoseDto == null)
+        {
+            throw new ArgumentNullException(nameof(suggestedDoseDto), "O objeto não pode ser nulo.");
+        }
+        
+        decimal dose = 0;
+        var insulinDose = insulinDoseRepository.GetByIdTypeInsulinAsync(suggestedDoseDto.IdTypeInsulin).Result;
+
+        if (insulinDose == null)
+        {
+            throw new ArgumentNullException(nameof(insulinDose), "Não foi localizada uma dose para o tipo de insulina fornecido");
+        }
+        
+        while (suggestedDoseDto.CarbohydrateAmount >= 5)
+        {
+            dose += 0.25m;
+            suggestedDoseDto.CarbohydrateAmount -= 5;
+        }
+        
+        //Desenvolver lógica futuramente, pois hoje não se sabe um calculo adequado para o mesmo. 
+        /*while (suggestedDoseDto.CalorieAmount >= 5)
+        {
+            dose += 0.25m;
+            suggestedDoseDto.CalorieAmount -= 5;
+        }
+        
+        while (suggestedDoseDto.ProteinAmount >= 5)
+        {
+            dose += 0.25m;
+            suggestedDoseDto.ProteinAmount -= 5;
+        }*/
+
+        if (suggestedDoseDto.ValueGlucose <= 120) 
+            return Task.FromResult(dose + Convert.ToDecimal(insulinDose.Amount));
+        
+        while (suggestedDoseDto.ValueGlucose >= 130)
+        {
+            dose += 0.25m;
+            suggestedDoseDto.ValueGlucose -= 10;
+        }
+
+        return Task.FromResult(dose + Convert.ToDecimal(insulinDose.Amount));
     }
 }

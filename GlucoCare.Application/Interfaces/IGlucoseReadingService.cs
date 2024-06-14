@@ -8,5 +8,5 @@ public interface IGlucoseReadingService
     Task Add(GlucoseReadingDTO glucoseReadingDto);
     Task Update(GlucoseReadingDTO glucoseReadingDto);
     Task Remove(int? id);
-    Task GetSuggestedDose(int idInsulin, int valueGlucose);
+    Task<decimal> GetSuggestedDose(SuggestedDoseDTO suggestedDoseDto);
 }

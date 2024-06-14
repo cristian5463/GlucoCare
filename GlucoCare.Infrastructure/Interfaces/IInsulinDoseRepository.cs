@@ -13,4 +13,5 @@ public interface IInsulinDoseRepository
     Task<InsulinDoseEntity> CreateAsync(InsulinDoseEntity insulinDose);
     Task<InsulinDoseEntity> UpdateAsync(InsulinDoseEntity insulinDose);
     Task<InsulinDoseEntity> RemoveAsync(InsulinDoseEntity insulinDose);
+    Task<InsulinDoseEntity> GetByIdTypeInsulinAsync(int? idTypeInsulin);
 }
