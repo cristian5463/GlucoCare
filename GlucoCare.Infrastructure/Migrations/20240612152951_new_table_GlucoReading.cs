@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GlucoCare.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class new_migration : Migration
+    public partial class new_table_GlucoReading : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,7 @@ namespace GlucoCare.Infrastructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ValueGlucose = table.Column<int>(type: "integer", nullable: false),
                     ReadingDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ReadingTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ReadingTime = table.Column<TimeSpan>(type: "interval", nullable: false),
                     MealType = table.Column<string>(type: "text", nullable: false),
                     ProteinAmount = table.Column<int>(type: "integer", nullable: false),
                     CarbohydrateAmount = table.Column<int>(type: "integer", nullable: false),

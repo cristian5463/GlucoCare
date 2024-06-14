@@ -27,6 +27,8 @@ public class GlucoseReadingController(
     [HttpGet("{id}", Name = "GetGlucoseReading")]
     public async Task<ActionResult<InsulinDTO>> Get(int id)
     {
+        UserDTO user = await userService.GetUserIdFromToken();
+
         try
         {
             var glucoseReading = await glucoseReadingService.GetById(id);
@@ -65,35 +67,38 @@ public class GlucoseReadingController(
         }
     }
 
-    /*[HttpPut("{id}")]
-    public async Task<ActionResult> Put(int id, [FromBody] InsulinDTO insulinDTO)
+    [HttpPut("{id}")]
+    public async Task<ActionResult> Put(int id, [FromBody] GlucoseReadingDTO glucoseReading)
     {
-        UserDTO user = await _userService.GetUserIdFromToken();
-
-        if (id != insulinDTO.Id)
+        try
         {
-            return BadRequest();
+            UserDTO user = await userService.GetUserIdFromToken();
+
+            if (id != glucoseReading.Id)
+            {
+                return BadRequest();
+            }
+            
+            glucoseReading.IdUser = user.IdUser;
+            await glucoseReadingService.Update(glucoseReading);
+
+            return Ok("Leitura alterada");
         }
-
-        insulinDTO.IdUser = user.IdUser;
-        await _insulinService.Update(insulinDTO);
-
-        return Ok(new Status200<T>("Insulina Alterada"));
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult<InsulinDTO>> Delete(int id)
     {
-        UserDTO user = await _userService.GetUserIdFromToken();
+        UserDTO user = await userService.GetUserIdFromToken();
 
-        var insulinDTO = await _insulinService.GetById(id);
-        if (insulinDTO == null)
-        {
-            return NotFound();
-        }
+        var glucoseReadingDto = await glucoseReadingService.GetById(id);
 
-        insulinDTO.IdUser = user.IdUser;
-        await _insulinService.Remove(id);
-        return Ok(new Status200<T>("Insulina Deletada"));
-    }*/
+        glucoseReadingDto.IdUser = user.IdUser;
+        await glucoseReadingService.Remove(id);
+        return Ok("Leitura deletada!");
+    }
 }

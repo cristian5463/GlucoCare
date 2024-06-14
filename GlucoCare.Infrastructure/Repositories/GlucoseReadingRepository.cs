@@ -7,9 +7,9 @@ namespace GlucoCare.Infrastructure.Repositories;
 
 public class GlucoseReadingRepository(ApplicationDbContext applicationDbContext) : IGlucoseReadingRepository
 {
-    public Task<IEnumerable<GlucoseReadingEntity>> GetGlucoseReadingsAsync(int idUser)
+    public async Task<IEnumerable<GlucoseReadingEntity>> GetGlucoseReadingsAsync(int idUser)
     {
-        throw new NotImplementedException();
+        return await applicationDbContext.GlucoseReading.Where(x => x.IdUser == idUser).ToListAsync();
     }
     
     public async Task<GlucoseReadingEntity> GetByIdAsync(int? id)
@@ -24,13 +24,23 @@ public class GlucoseReadingRepository(ApplicationDbContext applicationDbContext)
         return glucoseReading;
     }
 
-    public Task<GlucoseReadingEntity> UpdateAsync(GlucoseReadingEntity glucoseReading)
+    public async Task<GlucoseReadingEntity> UpdateAsync(GlucoseReadingEntity glucoseReading)
     {
-        throw new NotImplementedException();
+        var existingReading = await applicationDbContext.FindAsync<GlucoseReadingEntity>(glucoseReading.Id);
+
+        // Define explicitamente quais propriedades devem ser modificadas
+        applicationDbContext.Entry(existingReading).CurrentValues.SetValues(glucoseReading);
+        applicationDbContext.Entry(existingReading).Property(x => x.CreatedAt).IsModified = false;
+
+        await applicationDbContext.SaveChangesAsync();
+
+        return existingReading;
     }
 
-    public Task<GlucoseReadingEntity> RemoveAsync(GlucoseReadingEntity glucoseReading)
+    public async Task<GlucoseReadingEntity> RemoveAsync(GlucoseReadingEntity glucoseReading)
     {
-        throw new NotImplementedException();
+        applicationDbContext.Remove(glucoseReading);
+        await applicationDbContext.SaveChangesAsync();
+        return glucoseReading;
     }
 }

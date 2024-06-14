@@ -10,16 +10,12 @@ namespace GlucoCare.source.Dtos
         public int Id { get; set; }
         public int IdUser { get; set; }
         [Required(ErrorMessage = "O Valor da Glicose é obrigatório")]
-        [MinLength(1)]
-        [MaxLength(7)]
+        [Range(1, 1000, ErrorMessage = "O Valor da Glicose deve estar entre 1 e 1000.")]
         public int ValueGlucose { get; set; }
 
         [Required(ErrorMessage = "A data da leitura é obrigatória")]
-        public DateTime ReadingDate { get; set; }
-
-        [Required(ErrorMessage = "A hora da leitura é obrigatória")]
-        public TimeSpan ReadingTime { get; set; }
-
+        public DateTime ReadingDateTime { get; set; }
+        
         public string MealType { get; set; }
         public int ProteinAmount { get; set; }
         public int CarbohydrateAmount { get; set; }
@@ -29,8 +25,7 @@ namespace GlucoCare.source.Dtos
         public int IdTypeInsulin { get; set; }
 
         [Required(ErrorMessage = "A dose da insulina é obrigatória")]
-        [MinLength(1)]
-        [MaxLength(7)]
+        [Range(1, 1000, ErrorMessage = "A dose da insulina deve estar entre 1 e 1000.")]
         public int InsulinDose { get; set; }
 
         public DateTime CreatedAt { get; set; }

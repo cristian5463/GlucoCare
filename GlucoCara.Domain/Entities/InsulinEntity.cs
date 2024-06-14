@@ -50,11 +50,6 @@ namespace GlucoCare.source.Domain.Entities
             get { return typesInsulin; }
             private set
             {
-                /*if (value == null || value.Length == 0)
-                {
-                    throw new ArgumentException("É necessário especificar pelo menos um tipo de insulina.");
-                }*/
-
                 typesInsulin = value;
             }
         }

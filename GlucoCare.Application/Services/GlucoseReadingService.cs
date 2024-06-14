@@ -9,9 +9,10 @@ namespace GlucoCare.Application.Services;
 
 public class GlucoseReadingService(IMapper mapper, IGlucoseReadingRepository glucoseReadingRepository) : IGlucoseReadingService
 {
-    public Task<IEnumerable<GlucoseReadingDTO>> GetGlucoseReadings(int userId)
+    public async Task<IEnumerable<GlucoseReadingDTO>> GetGlucoseReadings(int userId)
     {
-        throw new NotImplementedException();
+        var glucoseReading = await glucoseReadingRepository.GetGlucoseReadingsAsync(userId);
+        return mapper.Map<IEnumerable<GlucoseReadingDTO>>(glucoseReading);
     }
 
     public async Task<GlucoseReadingDTO> GetById(int? id)
@@ -26,14 +27,16 @@ public class GlucoseReadingService(IMapper mapper, IGlucoseReadingRepository glu
         return glucoseReadingRepository.CreateAsync(glucoseReadingEntity);
     }
 
-    public Task Update(GlucoseReadingDTO glucoseReadingDto)
+    public async Task Update(GlucoseReadingDTO glucoseReadingDto)
     {
-        throw new NotImplementedException();
+        var glucoseReading = mapper.Map<GlucoseReadingEntity>(glucoseReadingDto);
+        await glucoseReadingRepository.UpdateAsync(glucoseReading);
     }
 
-    public Task Remove(int? id)
+    public async Task Remove(int? id)
     {
-        throw new NotImplementedException();
+        var glucoseReadingEntity = glucoseReadingRepository.GetByIdAsync(id).Result;
+        await glucoseReadingRepository.RemoveAsync(glucoseReadingEntity);
     }
 
     public Task GetSuggestedDose(int idInsulin, int valueGlucose)

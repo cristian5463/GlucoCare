@@ -9,16 +9,15 @@ public class GlucoseReadingEntity
     public int Id { get; set; }
 
     private int _valueGlucose;
-    private DateTime _readingDate;
-    private TimeSpan _readingTime;
+    private DateTime _readingDateTime;
     private int _idTypeInsulin;
     private int _insulinDose;
+    private DateTime _updatedAt;
 
-    public GlucoseReadingEntity(int valueGlucose, DateTime readingDate, TimeSpan readingTime, int idTypeInsulin, int insulinDose)
+    public GlucoseReadingEntity(int valueGlucose, DateTime readingDateTime,  int idTypeInsulin, int insulinDose)
     {
         ValueGlucose = valueGlucose;
-        ReadingDate = readingDate.Date;
-        ReadingTime = readingTime;
+        ReadingDateTime = readingDateTime;
         IdTypeInsulin = idTypeInsulin;
         InsulinDose = insulinDose;
         CreatedAt = DateTime.UtcNow;
@@ -29,7 +28,7 @@ public class GlucoseReadingEntity
         get => _valueGlucose;
         private set
         {
-            if (value is < 1 or > 1000)
+            if (value < 1 || value > 1000)
             {
                 throw new ArgumentOutOfRangeException(nameof(value), "O Valor da Glicose deve estar entre 1 e 1000.");
             }
@@ -37,29 +36,16 @@ public class GlucoseReadingEntity
         }
     }
 
-    public DateTime ReadingDate
+    public DateTime ReadingDateTime
     {
-        get => _readingDate;
+        get => _readingDateTime;
         private set
         {
             if (value == default)
             {
                 throw new ArgumentException("A data é obrigatória.", nameof(value));
             }
-            _readingDate = value;
-        }
-    }
-
-    public TimeSpan ReadingTime
-    {
-        get => _readingTime;
-        private set
-        {
-            if (value == default)
-            {
-                throw new ArgumentException("A hora é obrigatória.", nameof(value));
-            }
-            _readingTime = value;
+            _readingDateTime = value;
         }
     }
 
@@ -89,7 +75,7 @@ public class GlucoseReadingEntity
         get => _insulinDose;
         private set
         {
-            if (value is < 1 or > 1000)
+            if (value < 1 && value > 1000)
             {
                 throw new ArgumentOutOfRangeException(nameof(value), "A dose da insulina deve estar entre 1 e 1000.");
             }
@@ -99,11 +85,10 @@ public class GlucoseReadingEntity
 
     public DateTime CreatedAt { get; private set; }
 
-    public DateTime UpdatedAt { get; private set; }
-
-    public void UpdateTimestamps()
+    public DateTime UpdatedAt
     {
-        UpdatedAt = DateTime.UtcNow;
+        get => _updatedAt; 
+        private set =>  _updatedAt = DateTime.UtcNow; 
     }
     
     public int IdUser { get; private set; }

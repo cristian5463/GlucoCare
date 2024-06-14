@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GlucoCare.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240612150635_new_migration")]
-    partial class new_migration
+    [Migration("20240612152951_new_table_GlucoReading")]
+    partial class new_table_GlucoReading
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,8 +83,8 @@ namespace GlucoCare.Infrastructure.Migrations
                     b.Property<DateTime>("ReadingDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("ReadingTime")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<TimeSpan>("ReadingTime")
+                        .HasColumnType("interval");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
