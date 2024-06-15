@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GlucoCare.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc4b2da7960427a6e0945e5a87d583a6f0722661")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27e3d9313bde5d083db3729bf5c34086c52a0b7f")]
 [assembly: System.Reflection.AssemblyProductAttribute("GlucoCare.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GlucoCare.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
