@@ -35,7 +35,6 @@ public class GlucoseReadingEntity
             _valueGlucose = value;
         }
     }
-
     public DateTime ReadingDateTime
     {
         get => _readingDateTime;
@@ -69,6 +68,8 @@ public class GlucoseReadingEntity
             _idTypeInsulin = value;
         }
     }
+    
+    public int? IdTypeInsulinSecond { get; private set; }
 
     public int InsulinDose
     {
@@ -82,6 +83,8 @@ public class GlucoseReadingEntity
             _insulinDose = value;
         }
     }
+    
+    public int? InsulinDoseSecond { get; private set; }
 
     public DateTime CreatedAt { get; private set; }
 

@@ -18,6 +18,6 @@ namespace GlucoCare.source.Dtos
         public int CalorieAmount { get; set; }
         
         [Required(ErrorMessage = "O Id da insulina é obrigatório")]
-        public int IdTypeInsulin { get; set; }
+        public int IdInsulinDose { get; set; }
     }
 }

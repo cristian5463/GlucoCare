@@ -28,6 +28,8 @@ namespace GlucoCare.source.Dtos
         [Range(1, 1000, ErrorMessage = "A dose da insulina deve estar entre 1 e 1000.")]
         public int InsulinDose { get; set; }
 
+        public int IdTypeInsulinSecond { get; set; }
+        public int InsulinDoseSecond { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

@@ -6,7 +6,11 @@ using GlucoCare.source.Dtos;
 
 namespace GlucoCare.Application.Services;
 
-public class GlucoseReadingService(IMapper mapper, IGlucoseReadingRepository glucoseReadingRepository, IInsulinDoseRepository insulinDoseRepository) : IGlucoseReadingService
+public class GlucoseReadingService(
+    IMapper mapper, 
+    IGlucoseReadingRepository glucoseReadingRepository, 
+    IInsulinRepository insulinRepository,
+    IInsulinDoseRepository insulinDoseRepository) : IGlucoseReadingService
 {
     public async Task<IEnumerable<GlucoseReadingDTO>> GetGlucoseReadings(int userId)
     {
@@ -23,6 +27,23 @@ public class GlucoseReadingService(IMapper mapper, IGlucoseReadingRepository glu
     public Task Add(GlucoseReadingDTO glucoseReadingDto)
     {
         var glucoseReadingEntity = mapper.Map<GlucoseReadingEntity>(glucoseReadingDto);
+
+        var insulin = insulinRepository.GetByIdAsync(glucoseReadingEntity.IdTypeInsulin).Result;
+
+        if (insulin.IndividualApplication != false) return glucoseReadingRepository.CreateAsync(glucoseReadingEntity);
+        
+        if (glucoseReadingEntity.IdTypeInsulinSecond == null)
+        {
+            throw new ArgumentNullException(nameof(glucoseReadingDto), 
+                "A segunda insulina deve ser informada quando a insulina não tiver aplicação individual true.");
+        }
+            
+        if (glucoseReadingEntity.InsulinDoseSecond == null)
+        {
+            throw new ArgumentNullException(nameof(glucoseReadingDto), 
+                "A segunda dose de insulina deve ser informada quando a insulina não tiver aplicação individual true.");
+        }
+
         return glucoseReadingRepository.CreateAsync(glucoseReadingEntity);
     }
 
@@ -46,7 +67,7 @@ public class GlucoseReadingService(IMapper mapper, IGlucoseReadingRepository glu
         }
         
         decimal dose = 0;
-        var insulinDose = insulinDoseRepository.GetByIdTypeInsulinAsync(suggestedDoseDto.IdTypeInsulin).Result;
+        var insulinDose = insulinDoseRepository.GetByIdAsync(suggestedDoseDto.IdInsulinDose).Result;
 
         if (insulinDose == null)
         {

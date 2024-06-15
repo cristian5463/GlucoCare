@@ -46,6 +46,12 @@ public class InsulinDoseService : IInsulinDoseService
         await _insulinDoseRepository.RemoveAsync(insulinDoseEntity);
     }
 
+    public async Task<IEnumerable<InsulinDoseDTO>> GetByIdTypeInsulin(int idTypeInsulinDose)
+    {
+        var insulinDoseEntity = await _insulinDoseRepository.GetByIdTypeInsulinAsync(idTypeInsulinDose);
+        return _mapper.Map<IEnumerable<InsulinDoseDTO>>(insulinDoseEntity);
+    }
+
     public async Task Update(InsulinDoseDTO insulinDoseDTO)
     {
         var insulinDoseEntity = _mapper.Map<InsulinDoseEntity>(insulinDoseDTO);

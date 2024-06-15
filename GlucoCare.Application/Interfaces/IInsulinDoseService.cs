@@ -13,4 +13,5 @@ public interface IInsulinDoseService
     Task Add(InsulinDoseDTO insulinDoseDTO);
     Task Update(InsulinDoseDTO insulinDoseDTO);
     Task Remove(int? id);
+    Task<IEnumerable<InsulinDoseDTO>> GetByIdTypeInsulin(int idTypeInsulinDose);
 }

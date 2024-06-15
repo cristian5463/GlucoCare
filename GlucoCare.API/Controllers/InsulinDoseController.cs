@@ -55,6 +55,26 @@ public class InsulinDoseController : ControllerBase
         }
     }
 
+    [HttpGet("GetByIdTypeInsulin/{idTypeInsulin}", Name = "GetByIdTypeInsulin")]
+    public async Task<ActionResult<IEnumerable<InsulinDoseDTO>>> GetByIdTypeInsulin(int idTypeInsulin)
+    {
+        try
+        {
+            var insulinDose = await _insulinDoseService.GetByIdTypeInsulin(idTypeInsulin);
+
+            if (insulinDose == null)
+            {
+                return NotFound("Insulina não encontrada!");
+            }
+
+            return Ok(insulinDose);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+    
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] InsulinDoseDTO insulinDoseDTO)
     {
