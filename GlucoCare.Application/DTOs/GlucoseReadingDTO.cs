@@ -32,5 +32,6 @@ namespace GlucoCare.source.Dtos
         public int InsulinDoseSecond { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public TimeSpan TimeOnly { get; set; }
     }
 }

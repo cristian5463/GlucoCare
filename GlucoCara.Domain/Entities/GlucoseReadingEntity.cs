@@ -95,4 +95,7 @@ public class GlucoseReadingEntity
     }
     
     public int IdUser { get; private set; }
+    
+    [Column(TypeName = "time")]
+    public TimeSpan TimeOnly { get; private set; }
 }
