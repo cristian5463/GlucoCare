@@ -34,7 +34,7 @@ public class InsulinRepository : IInsulinRepository
 
     public async Task<IEnumerable<InsulinEntity>> GetInsulinsAsync(int idUser)
     {
-        return await _insulinContext.Insulin.Where(x => x.IdUser == idUser).ToListAsync();
+        return await _insulinContext.Insulin.Where(x => x.IdUser == idUser).OrderBy(x=> x.Id).ToListAsync();
     }
 
     public async Task<InsulinEntity> UpdateAsync(InsulinEntity insulin)

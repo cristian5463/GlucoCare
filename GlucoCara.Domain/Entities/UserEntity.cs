@@ -25,4 +25,5 @@ public class UserEntity : IdentityUser
         private set { updatedAt = DateTime.UtcNow; }
     }
     public UserEntity() : base() { }
+    
 }
